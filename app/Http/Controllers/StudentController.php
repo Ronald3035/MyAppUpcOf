@@ -18,8 +18,14 @@ class StudentController extends Controller
    	    $student=Student::where('state','1')->paginate(2);
     	return view('admin/index')->with('student', $student);
 	}
-	//crete
+	//create
 	public function create(){
 		return view('admin/student/create');
+	}
+	//store
+	public function store(Request $request){
+		$student = new Student($request->all());
+		$student->save();
+		return redirect()->route('student.index');
 	}
 }
