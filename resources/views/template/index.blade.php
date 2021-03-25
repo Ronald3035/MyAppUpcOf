@@ -81,20 +81,9 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">
+                        <!--contenido-->
+                       @yield('content')
                        
-                        <div class="card m-4">
-                            <div class="card-header">
-                                <i class="fas fa-table mr-1"></i>
-                                Title
-                            </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <!--contenido-->
-                                      
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

@@ -26,3 +26,7 @@ Route::get('/carreras',[CareerController::class, 'career']);
 Route::get('/template', function(){
 	return view('template/index');
 });
+
+Route::resource('student', StudentController::class);
+//index, create, store, edit, update, show, destroy; ...
+Route::resource('career', CareerController::class);
