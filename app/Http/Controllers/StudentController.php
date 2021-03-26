@@ -15,7 +15,7 @@ class StudentController extends Controller
    		//get() : devuelve como una coleccion de objetos
    		//paginate(): devuelve la peticion como una coleccion de objetos y adicionalmente devuelve datos paginados
    		//render(): genera automaticamente un componente HTML paginador
-   	    $student=Student::where('state','1')->paginate(2);
+   	    $student=Student::where('state','1')->orderBy('id','desc')->paginate(4);
     	return view('admin/index')->with('student', $student);
 	}
 	//create
@@ -24,8 +24,25 @@ class StudentController extends Controller
 	}
 	//store
 	public function store(Request $request){
+		//dd($request);
 		$student = new Student($request->all());
 		$student->save();
 		return redirect()->route('student.index');
+	}
+	//edit
+	public function edit($id){
+		$student=Student::find($id);
+		return view('admin/student/edit')->with('student', $student);
+	}
+	//update
+	public function update($id, Request $request){
+		$student=Student::find($id);
+		//dd($request);
+		$student->name=$request->name;
+		$student->code=$request->code;
+		$student->career=$request->career;
+		$student->save();
+		return redirect()->route('student.index');
+		//dd($student);
 	}
 }
